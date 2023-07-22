@@ -1,10 +1,13 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { CidadesController } from '../controllers';
+
+//CidadesController.create();
 
 const router =  Router();
 
 router.get('/', (req, res) => {
-  return res.send('Olá dev');
+  return res.send('Olá dev, serviço no ar');
 } );
 
 router.get('/teste/:id', (req, res) => {
@@ -25,16 +28,7 @@ router.get('/qp', (req, res) => {
 
 } );
 
-router.post('/', (req, res) => {
-  const { body } = req;
-
-  console.log(body);
-
-  return res.status(201).json('OI');
-
-
-  // res.status(201).json({ data: response });
-} );
+router.post('/cidades', CidadesController.createValidation, CidadesController.create); //usar o next para ir para o próximo handler
 
 
 export  { router };
