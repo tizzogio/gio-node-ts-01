@@ -2,15 +2,14 @@ import { RequestHandler } from 'express';
 import * as yup from 'yup';
 import './../../shared/services/TranslationsYup';
 import { Validation } from '../../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 interface ICidade {
   nome: string;
-  estado: string;
 }
 
 const bodyValidation: yup.ObjectSchema<ICidade> = yup.object({
   nome: yup.string().required().min(3),
-  estado: yup.string().required().length(2),
 });
 
 //handler para validar
@@ -23,5 +22,5 @@ export const create: RequestHandler = async (req, res) => {
 
   console.log(req.body);
 
-  return res.send('Create');
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
 };

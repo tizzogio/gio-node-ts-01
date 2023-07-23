@@ -12,7 +12,6 @@ type TValidation = (schemas: Partial<TAllSchemas>) => RequestHandler;
 
 
 export const Validation: TValidation = (schemas) =>  async (req, res, next) => {
-  console.log('teste');
 
   const errorsResult: Record<string, Record<string, string>> = {};
 
